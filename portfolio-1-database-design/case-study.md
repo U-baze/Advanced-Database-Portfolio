@@ -1,4 +1,4 @@
-## 1. Organisation and Scenario
+## 1. Case study Scenario
 AOT-CTF is a live Capture The Flag competition in the Attack-Defense CTF style.
 Ten teams take part, 4 players per team and each gets its own copy of the same vulnerable
 web application (OWASP Juice Shop). Teams simultaneously launch offensive

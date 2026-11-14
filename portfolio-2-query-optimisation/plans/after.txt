@@ -1,0 +1,49 @@
+SET
+===== Q2 plan: captures per hour =====
+                                                                              QUERY PLAN                                                                               
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=417.46..530.96 rows=9080 width=134) (actual time=2.837..2.889 rows=84 loops=1)
+   Group Key: date_trunc('hour'::text, s.submitted_at), t.team_name
+   Batches: 1  Memory Usage: 409kB
+   Buffers: shared hit=37
+   ->  Hash Join  (cost=22.44..349.36 rows=9080 width=126) (actual time=0.051..1.951 rows=8627 loops=1)
+         Hash Cond: (s.team_id = t.team_id)
+         Buffers: shared hit=37
+         ->  Index Only Scan using idx_submissions_accepted_time on submissions s  (cost=0.29..280.49 rows=9080 width=12) (actual time=0.020..0.592 rows=8627 loops=1)
+               Heap Fetches: 0
+               Buffers: shared hit=36
+         ->  Hash  (cost=15.40..15.40 rows=540 width=122) (actual time=0.013..0.013 rows=10 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=1
+               ->  Seq Scan on teams t  (cost=0.00..15.40 rows=540 width=122) (actual time=0.008..0.009 rows=10 loops=1)
+                     Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=266
+ Planning Time: 1.077 ms
+ Execution Time: 3.123 ms
+(19 rows)
+
+===== Q4 plan: noisiest attackers in one tick =====
+                                                                                QUERY PLAN                                                                                
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=127.12..132.52 rows=540 width=126) (actual time=0.853..0.858 rows=10 loops=1)
+   Group Key: t.team_name
+   Batches: 1  Memory Usage: 49kB
+   Buffers: shared hit=32
+   ->  Hash Join  (cost=22.57..116.53 rows=2118 width=118) (actual time=0.037..0.580 rows=2069 loops=1)
+         Hash Cond: (s.team_id = t.team_id)
+         Buffers: shared hit=32
+         ->  Index Scan using idx_submissions_time on submissions s  (cost=0.42..88.78 rows=2118 width=4) (actual time=0.024..0.286 rows=2069 loops=1)
+               Index Cond: ((submitted_at >= '2026-11-21 12:00:00+01'::timestamp with time zone) AND (submitted_at < '2026-11-21 12:05:00+01'::timestamp with time zone))
+               Buffers: shared hit=31
+         ->  Hash  (cost=15.40..15.40 rows=540 width=122) (actual time=0.009..0.009 rows=10 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=1
+               ->  Seq Scan on teams t  (cost=0.00..15.40 rows=540 width=122) (actual time=0.004..0.005 rows=10 loops=1)
+                     Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=3
+ Planning Time: 0.152 ms
+ Execution Time: 0.886 ms
+(19 rows)
+

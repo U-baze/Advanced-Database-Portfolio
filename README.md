@@ -1,7 +1,7 @@
 # Advanced Database Systems Portfolio (MIT 8103)
 
 **Case study: AOT-CTF**, a live Attack-Defense Capture The Flag competition.
-Ten teams each run a copy of the vulnerable application (OWASP Juice Shop), steal the CTF flags from each
+Ten teams each run a copy of the vulnerable application (OWASP Juice Shop), simultaneously steal the CTF flags from each
 other's vulnerable application and patch their own. Every 5 minutes (one tick) a new flag is
 planted in each team's server. A team scores +1 for each flag it steals and -1
 for each of its own flags stolen. The database records every flag and every

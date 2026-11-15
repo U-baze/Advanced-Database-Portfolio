@@ -14,29 +14,29 @@ constantly.
 ## Files
 | File | Purpose |
 |---|---|
-| load-leaderboard.sql | Calculates each team's points in PostgreSQL and writes them as Redis ZADD commands |
-| leaderboard-load-commands.txt | The commands that were loaded |
-| leaderboard-demo.redis | Leaderboard operations: top 3, rank, live capture, positive scores, rate limit |
-| leaderboard-demo-output.txt | Output of the demo |
-| rebuild-check.sh | Compares Redis with PostgreSQL, rebuilds Redis, compares again |
+| Onabanjo_Ubaydullah_301907741_P4_LoadLeaderboard.sql | Calculates each team's points in PostgreSQL and writes them as Redis ZADD commands |
+| Onabanjo_Ubaydullah_301907741_P4_LeaderboardLoadCommands.txt | The commands that were loaded |
+| Onabanjo_Ubaydullah_301907741_P4_LeaderboardDemo.redis | Leaderboard operations: top 3, rank, live capture, positive scores, rate limit |
+| Onabanjo_Ubaydullah_301907741_P4_LeaderboardDemoOutput.txt | Output of the demo |
+| Onabanjo_Ubaydullah_301907741_P4_RebuildCheck.sh | Compares Redis with PostgreSQL, rebuilds Redis, compares again |
 
 ## How to run
-Load the Portfolio 2 event data first (portfolio-2-query-optimisation/generate-data.sql), then:
+Load the Portfolio 2 event data first (portfolio-2-query-optimisation/Onabanjo_Ubaydullah_301907741_P2_GenerateData.sql), then:
 ```bash
 docker exec aotctf-redis redis-cli DEL aotctf:leaderboard
-docker exec -i aotctf-pg psql -U aotctf -d aotctf -At < portfolio-4-nosql/load-leaderboard.sql | docker exec -i aotctf-redis redis-cli
-docker exec -i aotctf-redis redis-cli < portfolio-4-nosql/leaderboard-demo.redis
-bash portfolio-4-nosql/rebuild-check.sh
+docker exec -i aotctf-pg psql -U aotctf -d aotctf -At < portfolio-4-nosql/Onabanjo_Ubaydullah_301907741_P4_LoadLeaderboard.sql | docker exec -i aotctf-redis redis-cli
+docker exec -i aotctf-redis redis-cli < portfolio-4-nosql/Onabanjo_Ubaydullah_301907741_P4_LeaderboardDemo.redis
+bash portfolio-4-nosql/Onabanjo_Ubaydullah_301907741_P4_RebuildCheck.sh
 ```
 
 ## Evidence
 Leaderboard operations:
 
-![Leaderboard demo](../docs/screenshots/p4-leaderboard-demo.png)
+![Leaderboard demo](../docs/screenshots/Onabanjo_Ubaydullah_301907741_P4_LeaderboardDemo.png)
 
 Redis drifts from PostgreSQL after updates made only in Redis, and is rebuilt to match:
 
-![Consistency check](../docs/screenshots/p4-consistency.png)
+![Consistency check](../docs/screenshots/Onabanjo_Ubaydullah_301907741_P4_Consistency.png)
 
 ## Why a key-value sorted set suits the leaderboard
 - **Reads dominate.** During the game every player and viewer refreshes the
@@ -56,7 +56,7 @@ Redis drifts from PostgreSQL after updates made only in Redis, and is rebuilt to
 - Data held in two places can drift. Here the demo capture updated Redis only,
   and the scores no longer matched PostgreSQL. The rule is: PostgreSQL is the
   source of truth, Redis is a fast copy that can always be rebuilt from it
-  (rebuild-check.sh).
+  (Onabanjo_Ubaydullah_301907741_P4_RebuildCheck.sh).
 - Memory is limited, so Redis holds only the small, hot data (10 scores and
   counters), not the full submission history.
 - In a real system each accepted submission would be committed in PostgreSQL

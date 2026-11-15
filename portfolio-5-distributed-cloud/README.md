@@ -9,8 +9,8 @@ A second Redis server (aotctf-redis-replica) copies the leaderboard from the
 main Redis server automatically.
 
 ```bash
-docker compose -f docker-compose.yml -f portfolio-5-distributed-cloud/docker-compose.replica.yml up -d redis-replica
-bash portfolio-5-distributed-cloud/replication-demo.sh
+docker compose -f docker-compose.yml -f portfolio-5-distributed-cloud/Onabanjo_Ubaydullah_301907741_P5_DockerComposeReplica.yml up -d redis-replica
+bash portfolio-5-distributed-cloud/Onabanjo_Ubaydullah_301907741_P5_ReplicationDemo.sh
 ```
 
 What the demonstration shows:
@@ -22,7 +22,7 @@ What the demonstration shows:
    (availability), but no new captures can be recorded until it returns.
 6. When the primary restarts, the replica reconnects.
 
-![Replication demonstration](../docs/screenshots/p5-replication.png)
+![Replication demonstration](../docs/screenshots/Onabanjo_Ubaydullah_301907741_P5_Replication.png)
 
 ## Replication
 - **PostgreSQL:** one primary takes every write (flags and submissions).

@@ -6,14 +6,14 @@ flag only once.
 
 ## How to run
 ```bash
-docker exec -i aotctf-pg psql -U aotctf -d aotctf < portfolio-1-database-design/schema.sql
-docker exec -i aotctf-pg psql -U aotctf -d aotctf < portfolio-1-database-design/sample-data.sql
-docker exec -i aotctf-pg psql -U aotctf -d aotctf < portfolio-3-transactions-concurrency/commit-rollback.sql
+docker exec -i aotctf-pg psql -U aotctf -d aotctf < portfolio-1-database-design/Onabanjo_Ubaydullah_301907741_P1_Schema.sql
+docker exec -i aotctf-pg psql -U aotctf -d aotctf < portfolio-1-database-design/Onabanjo_Ubaydullah_301907741_P1_SampleData.sql
+docker exec -i aotctf-pg psql -U aotctf -d aotctf < portfolio-3-transactions-concurrency/Onabanjo_Ubaydullah_301907741_P3_CommitRollback.sql
 ```
 The two-session tests are run by hand in two psql sessions
 (`docker exec -it aotctf-pg psql -U aotctf -d aotctf`), following the steps below.
 
-## 1. Commit, rollback and savepoint (commit-rollback.sql)
+## 1. Commit, rollback and savepoint (Onabanjo_Ubaydullah_301907741_P3_CommitRollback.sql)
 - COMMIT: a capture is saved (Team 01 accepted 2 -> 3).
 - ROLLBACK by choice: 5 mistaken attempts exist inside the transaction, then disappear.
 - Automatic rollback: one statement fails (a repeat capture), so PostgreSQL turns
@@ -23,7 +23,7 @@ The two-session tests are run by hand in two psql sessions
   duplicate and the transaction commits. This is how a submission service keeps a
   record of every attempt.
 
-![Commit and rollback](../docs/screenshots/p3-commit-rollback.png)
+![Commit and rollback](../docs/screenshots/Onabanjo_Ubaydullah_301907741_P3_CommitRollback.png)
 
 ## 2. Two players submit the same flag at the same moment
 Two sessions act as two Team 05 players submitting Team 06's tick-1 flag.
@@ -35,7 +35,7 @@ Two sessions act as two Team 05 players submitting Team 06's tick-1 flag.
    check-then-insert race: each session's check was correct when it ran,
    but neither could see the other's uncommitted insert.
 
-![Race without protection](../docs/screenshots/p3-race-problem.png)
+![Race without protection](../docs/screenshots/Onabanjo_Ubaydullah_301907741_P3_RaceProblem.png)
 
 **With the unique index restored:**
 1. Session A inserts the capture (not yet committed).
@@ -47,7 +47,7 @@ Two sessions act as two Team 05 players submitting Team 06's tick-1 flag.
 The database enforces the rule itself, so it holds however many players or
 bots submit at once, without relying on application checks.
 
-![Race fixed](../docs/screenshots/p3-race-fixed.png)
+![Race fixed](../docs/screenshots/Onabanjo_Ubaydullah_301907741_P3_RaceFixed.png)
 
 ## 3. Isolation levels
 Session A reads Team 01's capture count while session B commits new captures.
@@ -59,4 +59,4 @@ Session A reads Team 01's capture count while session B commits new captures.
 A scoreboard report that reads many rows should use REPEATABLE READ, so all
 its numbers come from the same moment in the game.
 
-![Isolation levels](../docs/screenshots/p3-isolation.png)
+![Isolation levels](../docs/screenshots/Onabanjo_Ubaydullah_301907741_P3_Isolation.png)

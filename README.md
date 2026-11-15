@@ -8,7 +8,7 @@ for each of its own flags stolen. The database records every flag and every
 submission, accepts or rejects submissions correctly when many arrive at
 once, and serves the realtime game leaderboard.
 
-Full description: [case-study.md](portfolio-1-database-design/case-study.md)
+Full description: [Onabanjo_Ubaydullah_301907741_P1_CaseStudy.md](portfolio-1-database-design/Onabanjo_Ubaydullah_301907741_P1_CaseStudy.md)
 
 ## Portfolios
 | # | Topic | What it shows |

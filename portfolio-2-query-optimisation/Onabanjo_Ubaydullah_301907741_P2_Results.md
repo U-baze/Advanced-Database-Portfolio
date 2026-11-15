@@ -1,8 +1,8 @@
 # Query Performance Results
 
 Data: one full 8-hour event with 10 teams, 960 flags and 200,000 submissions
-(see generate-data.sql). Plans were captured with EXPLAIN (ANALYZE, BUFFERS),
-each run once to warm the cache and then saved (plans/before.txt, plans/after.txt).
+(see Onabanjo_Ubaydullah_301907741_P2_GenerateData.sql). Plans were captured with EXPLAIN (ANALYZE, BUFFERS),
+each run once to warm the cache and then saved (plans/Onabanjo_Ubaydullah_301907741_P2_PlanBefore.txt, plans/Onabanjo_Ubaydullah_301907741_P2_PlanAfter.txt).
 
 ## Summary
 | Query | Before | After | Pages read | Execution time |

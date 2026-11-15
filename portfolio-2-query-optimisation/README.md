@@ -15,7 +15,7 @@ Uses the Portfolio 1 schema with a full simulated 8-hour AOT-CTF event:
 | results.md | Performance analysis |
 
 ## The four queries
-1. **Scoreboard**: +1 per flag captured, -1 per flag lost, ranked with RANK().
+1. **Leaderboard**: +1 per flag captured, -1 per flag lost, ranked with RANK().
 2. **Captures per hour**: per team, with a running total (window function).
 3. **Most-attacked teams**: flags lost and how many teams attacked each one.
 4. **Noisiest attackers in one tick**: attempts, invalid flags and duplicates in a 5-minute window.
@@ -39,7 +39,7 @@ Data volume by result:
 
 Scoreboard:
 
-![Scoreboard](../docs/screenshots/p2-scoreboard.png)
+![leaderboard](../docs/screenshots/p2-scoreboard.png)
 
 Most-attacked teams and noisiest attackers:
 

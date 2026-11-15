@@ -5,7 +5,7 @@ Imagine recording everything in a single submission log, where every row holds:
 submission time, result, attacking team name, player name, flag value,
 flag owner team name, tick number and flag expiry.
 
-The Potential Problem with this are:
+The potential problems with this are:
 - Team names are repeated on thousands of rows, so renaming a team means
   updating thousands of rows (update anomaly).
 - A flag cannot be recorded until someone submits it (insertion anomaly).

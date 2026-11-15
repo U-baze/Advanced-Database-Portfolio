@@ -5,7 +5,7 @@ Ten teams each run a copy of the vulnerable application (OWASP Juice Shop), simu
 other's vulnerable application and patch their own. Every 5 minutes (one tick) a new flag is
 planted in each team's server. A team scores +1 for each flag it steals and -1
 for each of its own flags stolen. The database records every flag and every
-submission, accepts or rejects submissions correctly when many arrive at
+submission, accepts or rejects submissions correctly when multiple submissions arrive at
 once, and serves the realtime game leaderboard.
 
 Full description: [Onabanjo_Ubaydullah_301907741_P1_CaseStudy.md](portfolio-1-database-design/Onabanjo_Ubaydullah_301907741_P1_CaseStudy.md)

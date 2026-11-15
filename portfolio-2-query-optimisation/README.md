@@ -6,13 +6,13 @@ Uses the Portfolio 1 schema with a full simulated 8-hour AOT-CTF event:
 ## Files
 | File | Purpose |
 |---|---|
-| generate-data.sql; Builds the event: flags for 96 ticks and 200,000 submissions, including each team's patch time |
-| queries.sql; Four queries the competition needs |
-| query-results.txt; Output of all four queries |
-| explain.sql; EXPLAIN (ANALYZE, BUFFERS) for Q2 and Q4 |
-| indexes.sql; The two indexes added |
-| plans/before.txt, plans/after.txt; Execution plans before and after the indexes |
-| results.md; Performance analysis |
+| generate-data.sql | Builds the event: flags for 96 ticks and 200,000 submissions, including each team's patch time |
+| queries.sql | Four queries the competition needs |
+| query-results.txt | Output of all four queries |
+| explain.sql | EXPLAIN (ANALYZE, BUFFERS) for Q2 and Q4 |
+| indexes.sql | The two indexes added |
+| plans/before.txt, plans/after.txt | Execution plans before and after the indexes |
+| results.md | Performance analysis |
 
 ## The four queries
 1. **Scoreboard**: +1 per flag captured, -1 per flag lost, ranked with RANK().
@@ -55,4 +55,4 @@ Q4 after the index (index scan of one tick only):
 
 ## Result in one line
 Q4 went from 13.234 ms to 1.418 ms and from 1,706 pages read to 28; Q2 became
-an index-only scan. Details are in [results.md](results.md).# portfolio-2-query-optimisation
+an index-only scan. Details are in [results.md](results.md).

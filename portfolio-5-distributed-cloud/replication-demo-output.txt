@@ -1,0 +1,39 @@
+=== 1. Roles
+role:master
+connected_slaves:1
+role:slave
+master_link_status:up
+=== 2. The same leaderboard on both servers (top 3)
+Primary:
+Team 01
+405
+Team 02
+315
+Team 03
+225
+Replica:
+Team 01
+405
+Team 02
+315
+Team 03
+225
+=== 3. A capture written to the primary reaches the replica
+Primary, Team 03 after +1:
+226
+Replica, Team 03:
+226
+=== 4. The replica refuses writes
+READONLY You can't write against a read only replica.
+
+=== 5. Primary stopped: the replica still serves the scoreboard
+master_link_status:down
+Replica top 3 while the primary is down:
+Team 01
+405
+Team 02
+315
+Team 03
+226
+=== 6. Primary restarted: the link recovers
+master_link_status:up

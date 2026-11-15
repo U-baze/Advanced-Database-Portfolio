@@ -1,0 +1,11 @@
+# Adds a read-only Redis replica that copies everything from the main Redis
+services:
+  redis-replica:
+    image: redis:7
+    container_name: aotctf-redis-replica
+    restart: unless-stopped
+    command: ["redis-server", "--replicaof", "redis", "6379",
+              "--masterauth", "${REDIS_PASSWORD}", "--requirepass", "${REDIS_PASSWORD}"]
+    environment:
+      REDISCLI_AUTH: ${REDIS_PASSWORD}
+    depends_on: [redis]

@@ -1,0 +1,31 @@
+=== 1. Top 3 teams
+Team 01
+405
+Team 02
+315
+Team 03
+225
+=== 2. Rank of Team 05 (counted from 0) and its score
+4
+43
+=== 3. Live capture: Team 06 steals a flag from Team 05 (+1 and -1)
+-43
+42
+=== 4. Teams with a positive score
+Team 05
+42
+Team 04
+136
+Team 03
+225
+Team 02
+315
+Team 01
+405
+=== 5. Rate limit: count Team 01 submissions in a 60-second window
+0
+1
+1
+2
+3
+60

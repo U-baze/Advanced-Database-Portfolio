@@ -1,0 +1,17 @@
+ECHO "=== 1. Top 3 teams"
+ZREVRANGE aotctf:leaderboard 0 2 WITHSCORES
+ECHO "=== 2. Rank of Team 05 (counted from 0) and its score"
+ZREVRANK aotctf:leaderboard "Team 05"
+ZSCORE aotctf:leaderboard "Team 05"
+ECHO "=== 3. Live capture: Team 06 steals a flag from Team 05 (+1 and -1)"
+ZINCRBY aotctf:leaderboard 1 "Team 06"
+ZINCRBY aotctf:leaderboard -1 "Team 05"
+ECHO "=== 4. Teams with a positive score"
+ZRANGEBYSCORE aotctf:leaderboard (0 +inf WITHSCORES
+ECHO "=== 5. Rate limit: count Team 01 submissions in a 60-second window"
+DEL aotctf:rate:team01
+INCR aotctf:rate:team01
+EXPIRE aotctf:rate:team01 60
+INCR aotctf:rate:team01
+INCR aotctf:rate:team01
+TTL aotctf:rate:team01

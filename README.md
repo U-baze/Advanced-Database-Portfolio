@@ -13,11 +13,11 @@ Full description: [Onabanjo_Ubaydullah_301907741_P1_CaseStudy.md](portfolio-1-da
 ## Portfolios
 | # | Topic | What it shows |
 |---|---|---|
-| 1 | [Database design and modelling](portfolio-1-database-design/) | ER diagram, four-table schema, keys and constraints, normalisation, eight rejected bad inserts |
-| 2 | [Query processing and optimisation](portfolio-2-query-optimisation/) | 200,000 generated submissions, four queries, execution plans before and after indexes (Q4: 13.2 ms to 1.4 ms) |
-| 3 | [Transactions and concurrency](portfolio-3-transactions-concurrency/) | Commit, rollback, savepoint; a double-capture race and its fix; READ COMMITTED vs REPEATABLE READ |
-| 4 | [NoSQL and advanced data models](portfolio-4-nosql/) | Redis sorted-set leaderboard, live updates, rate limiting, rebuild from PostgreSQL |
-| 5 | [Distributed and cloud databases](portfolio-5-distributed-cloud/) | Redis primary/replica with failure test; replication, consistency, sharding and cloud deployment |
+| 1 | [Database design and modelling](portfolio-1-database-design/Onabanjo_Ubaydullah_301907741_P1_README.md) | ER diagram, four-table schema, keys and constraints, normalisation, eight rejected bad inserts |
+| 2 | [Query processing and optimisation](portfolio-2-query-optimisation/Onabanjo_Ubaydullah_301907741_P2_README.md) | 200,000 generated submissions, four queries, execution plans before and after indexes (Q4: 13.2 ms to 1.4 ms) |
+| 3 | [Transactions and concurrency](portfolio-3-transactions-concurrency/Onabanjo_Ubaydullah_301907741_P3_README.md) | Commit, rollback, savepoint; a double-capture race and its fix; READ COMMITTED vs REPEATABLE READ |
+| 4 | [NoSQL and advanced data models](portfolio-4-nosql/Onabanjo_Ubaydullah_301907741_P4_README.md) | Redis sorted-set leaderboard, live updates, rate limiting, rebuild from PostgreSQL |
+| 5 | [Distributed and cloud databases](portfolio-5-distributed-cloud/Onabanjo_Ubaydullah_301907741_P5_README.md) | Redis primary/replica with failure test; replication, consistency, sharding and cloud deployment |
 
 ## Technology
 - PostgreSQL 17: source of truth (Portfolios 1-3)

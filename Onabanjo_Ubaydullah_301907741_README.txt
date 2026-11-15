@@ -24,7 +24,7 @@ Repository layout:
 - portfolio-5-distributed-cloud         Redis primary/replica setup and distributed/cloud discussion
 - docs/screenshots                      all evidence screenshots
 Evidence files are named Onabanjo_Ubaydullah_301907741_P<portfolio>_<type>.
-Each portfolio folder has a README.md explaining what was done, how to run it and the evidence.
+Each portfolio folder has an Onabanjo_Ubaydullah_301907741_P<n>_README.md explaining what was done, how to run it and the evidence.
 
 How to run:
 1. Copy .env.example to .env and set the passwords.

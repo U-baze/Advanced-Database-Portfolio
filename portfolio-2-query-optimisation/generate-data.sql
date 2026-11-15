@@ -11,26 +11,34 @@ SELECT t.team_id, k,
        TIMESTAMPTZ '2026-11-21 09:00+01' + (k - 1) * INTERVAL '5 minutes' + INTERVAL '15 minutes'
 FROM teams t CROSS JOIN generate_series(1, 96) AS k;
 
--- 200,000 attempts. Lower-numbered teams attack more; higher-numbered teams are
--- attacked more. About 10% are made-up flags. Real flags are submitted up to
+-- 200,000 attempts.
+-- Lower-numbered teams attack more; higher-numbered teams are attacked more.
+-- Each team patches its service at a set tick: Team 01 at tick 5, rising by
+-- 9 ticks per team to Team 10 at tick 86. After that, attacks on its flags
+-- fail and the bots submit wrong values (recorded as invalid).
+-- About 10% of attempts are made-up flags. Real flags are submitted up to
 -- 20 minutes after planting, so some arrive after they expire.
 WITH team_players AS (
   SELECT team_id, array_agg(player_id ORDER BY player_id) AS ids
   FROM players GROUP BY team_id
 ),
 raw AS (
-  SELECT 1 + floor(power(random(), 1.5) * 10)::int AS attacker,
-         10 - floor(power(random(), 2) * 10)::int  AS victim,
-         1 + floor(random() * 96)::int             AS tick,
-         random() < 0.10                            AS made_up,
-         random()                                   AS r1,
-         random()                                   AS r2
-  FROM generate_series(1, 200000)
+  SELECT g.*, g.tick >= 5 + (g.victim - 1) * 9 AS patched
+  FROM (
+    SELECT 1 + floor(power(random(), 1.5) * 10)::int AS attacker,
+           10 - floor(power(random(), 2) * 10)::int  AS victim,
+           1 + floor(random() * 96)::int             AS tick,
+           random() < 0.10                            AS made_up,
+           random()                                   AS r1,
+           random()                                   AS r2
+    FROM generate_series(1, 200000)
+  ) g
 ),
 attempts AS (
   SELECT r.attacker AS team_id,
          tp.ids[1 + floor(r.r1 * 4)::int] AS player_id,
-         CASE WHEN r.made_up THEN NULL ELSE f.flag_id END AS flag_id,
+         CASE WHEN r.made_up OR (r.patched AND r.attacker <> r.victim)
+              THEN NULL ELSE f.flag_id END AS flag_id,
          CASE WHEN r.made_up
               THEN TIMESTAMPTZ '2026-11-21 09:00+01' + r.r2 * INTERVAL '8 hours'
               ELSE f.created_at + r.r2 * INTERVAL '20 minutes' END AS submitted_at,

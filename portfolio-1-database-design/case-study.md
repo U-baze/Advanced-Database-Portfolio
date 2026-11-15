@@ -2,8 +2,8 @@
 AOT-CTF is a live Capture The Flag competition in the Attack-Defense CTF style.
 Ten teams take part, 4 players per team and each gets its own copy of the same vulnerable
 web application (OWASP Juice Shop). Teams simultaneously launch offensive
-attacks against their rivals' infrastructure to steal the secret flags, and
-fix the weaknesses in their own infrastructure so their flags cannot be stolen.
+attacks against their rivals' vulnerable server to steal the secret flags, and
+fix the weaknesses in their own server so their flags cannot be stolen.
 
 The CTF event mirrors real-world security operations: attackers find a bug and
 weaponize it at scale to exploit vulnerable organisations, while defenders

@@ -13,7 +13,7 @@ keeping downtime to the barest minimum.
 At the heart of the competition is the database, which keeps a record of every
 flag planted and every flag submitted. Under the pressure of the game, it must
 correctly accept or reject a high volume of submissions, even when many arrive
-at the same moment, while keeping the live scoreboard accurate. This makes
+at the same moment, while keeping the realtime leaderboard accurate. This makes
 AOT-CTF a practical case for database design, query performance, concurrency
 control, NoSQL and distributed databases.
 
@@ -29,7 +29,7 @@ and -1 point for every one of its own flags that another team steals.
 - CTF Players: submit the flags they steal and check their team's score.
 - Gameserver: an automated program that creates a new flag for every team each round.
 - CTF Organisers: set up teams and players, run the event and watch for cheating.
-- CTF Leaderboard viewers: anyone following the live rankings.
+- Realtime CTF Leaderboard viewers: anyone following the live rankings.
 
 ## 4. Major Data Stored
 
